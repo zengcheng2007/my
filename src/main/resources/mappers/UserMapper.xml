@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mytest.mappers.UserMapper">
+    <resultMap id="BaseResultMap" type="Sys_UserVO">
+        <id property="user_Id" column="user_id"/>
+        <result property="user_Name" column="user_name"/>
+        <result property="user_Pwd" column="user_pwd"/>
+    </resultMap>
+    <select id="selectAll" resultMap="BaseResultMap">
+     SELECT user_id, user_name, user_pwd FROM sys_user
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+     SELECT user_id, user_name, user_pwd FROM sys_user WHERE user_id = #{user_Id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+     INSERT INTO sys_user(user_id, user_name, user_pwd)
+     VALUES(#{user_Id},#{user_Name},#{user_Pwd})
+    </insert>
+
+    <update id="updateById">
+     UPDATE sys_user SET user_name = #{user_Name},user_pwd = #{user_Pwd} WHERE user_id = #{user_Id}
+    </update>
+
+    <delete id="deleteById">
+     DELETE FROM sys_user WHERE user_Id = #{user_Id}
+    </delete>
+</mapper>
