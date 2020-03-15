@@ -14,7 +14,7 @@
     <!-- 开启DI注解解析器 -->
     <context:annotation-config/>
     <!-- 开启IOC注解解析器,扫描包 比如@Service-->
-    <context:component-scan base-package="com.mytest.service"/>
+    <context:component-scan base-package="com.mytest.service,com.mytest.controller"/>
     <!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
@@ -24,7 +24,7 @@
     </bean>
 
     <!-- 1.加载 db.properties 配置文件 -->
-     <context:property-placeholder location="classpath:*.properties" system-properties-mode="NEVER"/>
+     <context:property-placeholder location="classpath:*.properties" system-properties-mode="NEVER" ignore-unresolvable="true"/>
 
     <!--引入外部配置文件 由于后期可能会引入多个配置文件 所以采用list的形式 -->
     <bean id="propertyPlaceholder"

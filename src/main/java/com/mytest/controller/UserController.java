@@ -5,6 +5,7 @@ import com.mytest.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import javax.servlet.ServletContext;
 import java.util.List;
 
 @RestController
+@Component("UserController")
 @Api(tags="User",description = "用户")
 public class UserController {
 
