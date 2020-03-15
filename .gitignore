@@ -2,3 +2,5 @@
 /*.war
 /out
 /target
+/*.iml
+/log/test.log
