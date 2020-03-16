@@ -3,30 +3,35 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''source /etc/profile
-mvn clean'''
-        archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
+        sh '''echo "build*********"
+source /etc/profile
+mvn clean
+pwd'''
       }
     }
 
     stage('Test') {
       steps {
-        sh 'mvn test'
+        sh '''echo "test******"
+mvn test'''
       }
     }
 
     stage('Package') {
       steps {
-        sh '''sh "\'mvn\' -Dmaven.test.skip=true package"
-archive \'target/*.jar\''''
+        sh '''echo "Package******"
+mvn -Dmaven.test.skip=true package
+pwd
+'''
       }
     }
 
     stage('Deploy') {
       agent any
       steps {
-        sh '''sh \'pwd\'
-sh \'ll\''''
+        sh '''echo "Deploy******"
+pwd
+ll'''
       }
     }
 
