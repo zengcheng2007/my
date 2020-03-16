@@ -3,20 +3,30 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'sh "ll"'
+        sh '''sh "mvn clean"
+sh "infer -- mvn compile"'''
         archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
       }
     }
 
     stage('Test') {
       steps {
-        echo 'Testing..'
+        sh '''sh "mvn test"
+junit \'target/surefire-reports/TEST-*.xml\''''
+      }
+    }
+
+    stage('Package') {
+      steps {
+        sh '''sh "\'mvn\' -Dmaven.test.skip=true package"
+archive \'target/*.jar\''''
       }
     }
 
     stage('Deploy') {
       steps {
-        echo 'Deploying....'
+        sh '''sh \'pwd\'
+sh \'ll\''''
       }
     }
 
