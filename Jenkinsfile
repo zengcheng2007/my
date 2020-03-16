@@ -36,7 +36,9 @@ pipeline {
     stage('Deliver') {
       steps {
         sh '''echo "Deploy******"
+export BUILD_ID=tomcat7_build_id
         pwd
+rm -rf /usr/local/tomcat7/webapps/my*
 				mv -f target/my.war /usr/local/tomcat7/webapps/
 				sh /usr/local/tomcat7/bin/shutdown.sh
 				sleep 10
