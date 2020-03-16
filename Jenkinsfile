@@ -4,8 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''source /etc/profile
-mvn clean
-infer -- mvn compile'''
+mvn clean'''
         archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
       }
     }
@@ -24,6 +23,7 @@ archive \'target/*.jar\''''
     }
 
     stage('Deploy') {
+      agent any
       steps {
         sh '''sh \'pwd\'
 sh \'ll\''''
