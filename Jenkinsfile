@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''sh "mvn clean"
+        sh '''sh "source /etc/profile"
+sh "mvn clean"
 sh "infer -- mvn compile"'''
         archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
       }
