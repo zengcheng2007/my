@@ -3,17 +3,16 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''sh "source /etc/profile"
-sh "mvn clean"
-sh "infer -- mvn compile"'''
+        sh '''
+mvn clean
+infer -- mvn compile'''
         archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
       }
     }
 
     stage('Test') {
       steps {
-        sh '''sh "mvn test"
-junit \'target/surefire-reports/TEST-*.xml\''''
+        sh 'mvn test'
       }
     }
 
