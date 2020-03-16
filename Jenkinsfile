@@ -37,8 +37,6 @@ pipeline {
       steps {
         sh '''echo "Deploy******"
         pwd
-ll
-
 				mv -f target/my.war /usr/local/tomcat7/webapps/
 				sh /usr/local/tomcat7/bin/shutdown.sh
 				sleep 10
