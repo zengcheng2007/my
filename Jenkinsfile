@@ -13,6 +13,7 @@ pwd'''
     stage('Test') {
       steps {
         sh '''echo "test******"
+source /etc/profile
 mvn test'''
       }
     }
@@ -20,6 +21,7 @@ mvn test'''
     stage('Package') {
       steps {
         sh '''echo "Package******"
+source /etc/profile
 mvn -Dmaven.test.skip=true package
 pwd
 '''
