@@ -2,6 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      agent any
       steps {
         sh '''
         echo "build*********"
@@ -33,16 +34,11 @@ pipeline {
       }
     }
 
-    stage('Deliver') {
+    stage('Deploy') {
       steps {
         sh '''echo "Deploy******"
-export BUILD_ID=tomcat7_build_id
-        pwd
-rm -rf /usr/local/tomcat7/webapps/my*
-				mv -f target/my.war /usr/local/tomcat7/webapps/
-				sh /usr/local/tomcat7/bin/shutdown.sh
-				sleep 10
-				sh /usr/local/tomcat7/bin/startup.sh'''
+pwd
+sh /usr/local/tomcat7/bin/JenkinsDeploy.sh my dev'''
       }
     }
 
