@@ -6,9 +6,8 @@ pipeline {
       steps {
         sh '''
         echo "build*********"
-				source /etc/profile
-				mvn clean
-				pwd
+	/usr/local/maven3.6.3/bin/mvn clean
+	pwd
 				'''
       }
     }
@@ -17,8 +16,7 @@ pipeline {
       steps {
         sh '''
         echo "test******"
-				source /etc/profile
-				mvn test
+	/usr/local/maven3.6.3/bin/mvn test
 				'''
       }
     }
@@ -27,9 +25,8 @@ pipeline {
       steps {
         sh '''
         echo "Package******"
-				source /etc/profile
-				mvn -Dmaven.test.skip=true package
-				pwd
+	/usr/local/maven3.6.3/bin/mvn -Dmaven.test.skip=true package
+	pwd
 				'''
       }
     }
