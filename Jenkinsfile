@@ -35,7 +35,7 @@ pipeline {
       steps {
         sh '''echo "Deploy******"
 pwd
-sh /usr/local/tomcat7/bin/JenkinsDeploy.sh my dev'''
+sh -x /usr/local/tomcat7/bin/JenkinsDeploy.sh my dev'''
       }
     }
 
